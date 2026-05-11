@@ -26,7 +26,7 @@ class Solution:
         X: NDArray[np.float64],
         Y: NDArray[np.float64],
         num_iterations: int,
-        initial_weights: NDArray[np.float64],
+        W: NDArray[np.float64],
     ) -> NDArray[np.float64]:
         # For each iteration:
         #   1. Compute predictions with get_model_prediction(X, weights)
@@ -35,9 +35,9 @@ class Solution:
         # Return np.round(final_weights, 5)
         N = len(X)
         for i in range(num_iterations):
-            pred = self.get_model_prediction(X, initial_weights)
-            for j in range(len(initial_weights)):
+            pred = self.get_model_prediction(X, W)
+            for j in range(len(W)):
                 gradient = self.get_derivative(pred, Y, N, X, j)
-                initial_weights[j] -= self.learning_rate * gradient
+                W[j] -= self.learning_rate * gradient
 
-        return np.round(initial_weights, 5)
+        return np.round(W, 5)
