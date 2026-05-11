@@ -17,4 +17,4 @@ class Solution:
     ) -> float:
         # Compute mean squared error between predictions and ground truth
         # Round to 5 decimal places
-        return round(np.square(ground_truth - model_prediction).mean(), 5)
+        return np.round(np.square(ground_truth - model_prediction).mean(), 5)
