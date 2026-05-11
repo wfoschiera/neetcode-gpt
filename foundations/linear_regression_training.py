@@ -24,10 +24,11 @@ class Solution:
         #   2. For each weight index j, compute gradient with get_derivative()
         #   3. Update: weights[j] -= learning_rate * gradient
         # Return np.round(final_weights, 5)
-        for _ in range(num_iterations):
-            model_prediction = self.get_model_prediction(X, initial_weights)
-            for j in range(len(initial_weights)):
+        weights = np.array(initial_weights)
+        for i in range(num_iterations):
+            model_prediction = self.get_model_prediction(X, weights)
+            for j in range(len(weights)):
                 gradient = self.get_derivative(model_prediction, Y, len(X), X, j)
-                initial_weights[j] -= self.learning_rate * gradient
+                weights[j] -= self.learning_rate * gradient
 
-        return np.round(initial_weights, 5)
+        return np.round(weights, 5)
