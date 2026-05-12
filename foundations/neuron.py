@@ -16,6 +16,6 @@ class Solution:
         z = (x @ w) + b
         if activation == "sigmoid":
             ans = 1 / (1 + np.exp(-z))
-        if activation == "relu":
+        elif activation == "relu":
             ans = max(0.0, z)
         return round(ans, 5)
