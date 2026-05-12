@@ -18,7 +18,7 @@ class Solution:
         z = (x @ w) + b
         match activation:
             case "sigmoid":
-                ans = 1 / (1 + np.exp(-z))
+                z = 1 / (1 + np.exp(-z))
             case "relu":
-                ans = max(0.0, z)
-        return round(ans, 5)
+                z = max(0.0, z)
+        return round(z, 5)
