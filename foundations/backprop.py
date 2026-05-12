@@ -17,7 +17,8 @@ class Solution:
         y_hat = 1 / (1 + np.exp(-z))
         L = 0.5 * (y_hat - y_true)**2
         
-        dL_dw = (y_hat - y_true) * y_hat*(1-y_hat) * x
         dL_db = (y_hat - y_true) * y_hat*(1-y_hat)
+        dL_dw = dL_db * x
+        
 
         return np.round(dL_dw, 5), round(dL_db, 5)
