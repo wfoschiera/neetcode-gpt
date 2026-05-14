@@ -8,7 +8,7 @@ class Solution:
         # Reshape (M, N) tensor to (M*N/2, 2)
         # Use torch.reshape(tensor, new_shape)
         M, N = to_reshape.shape
-        new_shape = (int(M*N/2), 2)
+        new_shape = (M*N//2, 2)
         return torch.reshape(to_reshape, new_shape)
 
     def average(self, to_avg: TensorType[float]) -> TensorType[float]:
