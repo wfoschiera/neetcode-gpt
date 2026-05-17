@@ -8,8 +8,9 @@ class Solution:
         # Normalize x, then scale by gamma
         # Return result rounded to 4 decimal places as a list
         x = np.array(x)
-        rms = np.sqrt(np.mean(np.square(x)) + eps)
+        gamma = np.array(gamma)
 
+        rms = np.sqrt(np.mean(np.square(x)) + eps)
         x_hat = x / rms
         out = gamma * x_hat
         return np.round(out, 4)
