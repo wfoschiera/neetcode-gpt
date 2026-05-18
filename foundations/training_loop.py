@@ -15,16 +15,17 @@ class Solution:
         # Initialize w = zeros, b = 0
         # return (np.round(w, 5), round(b, 5))
         w = np.zeros(shape=X.shape[1])
-        beta = 0
+        b = 0
         n = y.size
         for _ in range(epochs):
-            y_hat = X @ w + beta
+            y_hat = X @ w + b
+            err = y_hat - y
 
-            dw = (2/n) * X.T @ (y_hat-y)
-            db = (2/n) * sum(y_hat - y)
+            dw = (2/n) * X.T @ err
+            db = (2/n) * np.sum(err)
 
             w = w - lr * dw
-            beta = beta - lr * db
-            MSE = (1/n) * sum((y_hat - y)**2)
+            b = b - lr * db
+            
         
-        return (np.round(w, 5), round(beta, 5))
+        return (np.round(w, 5), round(b, 5))
